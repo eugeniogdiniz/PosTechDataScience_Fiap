@@ -206,3 +206,33 @@ Claro, vou explicar cada hiperparâmetro com exemplos de uso na biblioteca `scik
      ```
 
 Esses exemplos demonstram como cada hiperparâmetro pode ser usado ao criar um modelo de árvore de decisão com a biblioteca `scikit-learn`. A escolha dos valores ideais desses hiperparâmetros dependerá do conjunto de dados e do objetivo do modelo, e muitas vezes requer experimentação e validação cruzada para otimização.
+
+## Fale-me mais sobre o curva Roc, a curva AUC e suas principais diferenças e usos
+
+Claro, a Curva ROC (Receiver Operating Characteristic) e a Área sob a Curva (AUC - Area Under the Curve) são ferramentas fundamentais na avaliação de modelos de classificação.
+
+### Curva ROC:
+- **O que é:** Representa a relação entre a Sensibilidade (Recall) e a Especificidade do modelo para diferentes pontos de corte.
+- **Eixo X:** Taxa de Falsos Positivos (1 - Especificidade).
+- **Eixo Y:** Taxa de Verdadeiros Positivos (Sensibilidade).
+- **Interpretação:** Quanto mais próximo a curva estiver do canto superior esquerdo, melhor é o desempenho do modelo.
+- **Uso:** Auxilia na escolha do ponto de corte ideal para classificação com base na necessidade de minimizar falsos positivos ou negativos.
+
+### Área sob a Curva (AUC):
+- **O que é:** É a medida da área sob a Curva ROC.
+- **Interpretação:** Quanto maior a AUC, melhor é o desempenho do modelo.
+- **Valor:** Varia de 0 a 1, sendo 0.5 indicativo de um modelo aleatório e 1 indicando um modelo perfeito.
+- **Uso:** Permite a comparação entre diferentes modelos de classificação. Quanto maior a AUC, melhor é a capacidade discriminativa do modelo.
+
+### Principais Diferenças e Usos:
+- **Curva ROC:** É útil para observar o trade-off entre sensibilidade e especificidade para diferentes pontos de corte e entender como o modelo se comporta em diferentes níveis de classificação. É útil quando a sensibilidade e a especificidade têm importância variável dependendo do problema.
+  
+- **AUC:** É uma única métrica resumida que representa a qualidade geral do modelo. É valioso quando se deseja comparar modelos entre si, independentemente do ponto de corte escolhido. Um modelo com AUC maior geralmente é preferível.
+
+### Uso Prático:
+- **Curva ROC:** Visualizar a relação entre verdadeiros positivos e falsos positivos em diferentes limites de decisão.
+  
+- **AUC:** Comparar o desempenho de diferentes modelos de classificação e selecionar o modelo com melhor capacidade discriminativa.
+
+Ambas as métricas são cruciais na avaliação de modelos de classificação, proporcionando uma visão abrangente do desempenho do modelo em termos de sensibilidade, especificidade e capacidade de discriminação entre classes.
+
