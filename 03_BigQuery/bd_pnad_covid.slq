@@ -1,0 +1,50 @@
+SELECT
+  md.sigla_uf,
+  CASE
+    WHEN (CAST(md.b0011 AS int64) = 1 OR CAST(md.b0012 AS int64) = 1 OR CAST(md.b0013 AS int64) = 1 OR CAST(md.b0014 AS int64) = 1 OR CAST(md.b0015 AS int64) = 1 OR CAST(md.b0016 AS int64) = 1 OR CAST(md.b0017 AS int64) = 1 OR CAST(md.b0018 AS int64) = 1 OR CAST(md.b0019 AS int64) = 1 OR CAST(md.b00110 AS int64) = 1 OR CAST(md.b00111 AS int64) = 1 OR CAST(md.b00112 AS int64) = 1 OR CAST(md.b00113 AS int64) = 1) THEN 1
+  ELSE
+  0
+END
+  AS apresentou_sintoma,
+  CASE
+    WHEN md.b002 = '1' THEN 1
+  ELSE
+  0
+END
+  AS buscou_ajuda_medica,
+  md.A002 AS idade,
+  CASE
+    WHEN md.b009b = '1'THEN 'positivo'
+    WHEN md.b009b = '2' THEN 'negativo'
+    WHEN md.b009b = '3' THEN 'inconclusivo'
+  ELSE
+  'solicitado teste de sangue'
+END
+  AS resultado_teste_cotonete,
+  CASE
+    WHEN md.b009d = '1'THEN 'positivo'
+    WHEN md.b009d = '2' THEN 'negativo'
+    WHEN md.b009d = '3' THEN 'inconclusivo'
+  ELSE
+  'solicitado teste de sangue na veia'
+END
+  AS resultado_teste_sangue_dedo,
+  md.mes,
+  md.semana,
+  md.C007,
+  case when md.C007 = '1'then  '1. Trabalhador doméstico (empregado doméstico, cuidador, babá etc.)'
+       when md.C007 = '2'then '2. Militar do exército, da marinha, da aeronáutica'
+       when md.c007 = '3' then '3. Policial militar ou bombeiro militar'
+       when md.c007 = '4' then '4. Empregado do setor privado'
+       when md.c007 = '5' then '5. Empregado do setor público (inclusive empresas de economia mista)'
+       when md.c007 = '6' then '6. Empregador (que tem ao menos um empregado, formalizado ou não)'
+       when md.c007 = '7' then '7. Conta própria (sem empregado, podendo trabalhar com sócio ou com ajuda de parente não remunerado)'
+       when md.c007 = '8' then '8. Trabalhador não remunerado em ajuda a morador do domicílio ou parente'
+       when md.c007 = '9' then '9. Estava fora do mercado de trabalho (fazia apenas afazeres domésticos, cuidados de pessoas, produção para próprio consumo ou trabalho voluntário)' end as tipo_ocupacao,
+       *
+FROM
+  basedosdados.br_ibge_pnad_covid.microdados AS md
+WHERE
+  md.mes BETWEEN 9
+  AND 11
+  AND ano = 2020;
