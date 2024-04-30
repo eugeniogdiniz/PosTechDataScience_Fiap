@@ -138,7 +138,7 @@ cliente_pred = teste_novo_cliente.drop(['Mau'], axis=1)
 
 #Predições 
 if st.button('Enviar'):
-    model = joblib.load('xgb.joblib')
+    model = joblib.load('modelo/xgb.joblib')
     final_pred = model.predict(cliente_pred)
     if final_pred[-1] == 0:
         st.success('### Parabéns! Você teve o cartão de crédito aprovado')
