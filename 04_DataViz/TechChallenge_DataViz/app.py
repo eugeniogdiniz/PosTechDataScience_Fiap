@@ -48,7 +48,7 @@ petróleo, condições econômicas e muito mais.]
 # Importando os dados do IBOVESPA para o modelo
 alpha = 0.09   # Fator de suavização
 
-df = pd.read_csv(r'C:\Users\EugênioLenineGueiros\OneDrive - TPF-EGC\Documentos\FIAP\base_ipea.csv', sep = ';')
+df = pd.read_csv('TechChallenge_DataViz\base_ipea.csv', sep = ';')
 df['data'] = pd.to_datetime(df['data']) #realizando a conversão da data para formato datetime
 df['preco'] = df['preco'].str.replace(',', '.').astype(float) #realizando a conversão da data para tipo float
 df = df.sort_values(by='data', ascending=True)
