@@ -7,26 +7,13 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-import pandas as pd
-import torch
-import torch.nn as nn
-from torch.optim import Adam
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.model_selection import train_test_split
-import matplotlib.pyplot as plt
-import numpy as np
-
 # Para machine learning
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error
 # Para deep learning
-from keras.models import Sequential
-from keras.layers import LSTM,Dense,Dropout
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.metrics import MeanSquaredError
-from keras.models import load_model
+
 from tensorflow.keras.preprocessing.sequence import TimeseriesGenerator
 #Para aplicar o ARIMA:
 from statsmodels.tsa.stattools import adfuller          
