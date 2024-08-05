@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 pd.set_option('display.max_columns', None)
 
-csv_url = 'https://github.com/eugeniogdiniz/PosTechDataScience_Fiap/blob/main/05_Deep_Learning/arquivos/PEDE_PASSOS_DATASET_FIAP.csv'
+csv_url = 'https://raw.githubusercontent.com/eugeniogdiniz/PosTechDataScience_Fiap/main/05_Deep_Learning/arquivos/PEDE_PASSOS_DATASET_FIAP.csv'
 df = pd.read_csv(csv_url, delimiter=';')
 passos_magicos_22 = f.filter_columns(df, ['2020', '2021'])
 passos_magicos_22 = f.cleaning_dataset(passos_magicos_22)
@@ -18,7 +18,6 @@ passos_magicos_22.rename(columns={
     'PEDRA_2022_Topázio':'Topazio',
     'PEDRA_2022_Ágata':'Agata'
 }, inplace = True)
-
 
 st.sidebar.title('Páginas')
 paginaSelecionada = st.sidebar.selectbox('Selecione a Página', ['Passos Mágicos - Origem e Problema', 'Solução'])
