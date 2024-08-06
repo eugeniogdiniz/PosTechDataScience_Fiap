@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação do Projeto</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Quais as chances de você entrar em uma universidade?</h1>
+
+    <p>A proposta do projeto é um estudo de algoritmos de predição com o objetivo de prever a probabilidade dos alunos da Passos Mágicos de conseguir uma bolsa de estudos na universidade.
+    A solução traz junto de si uma explicação dos parametros utilizados para que o leitor não tenha dúvidas de como a solução funciona.</p>
+
+    <h2>1. Introdução</h2>
+    <p>Este projeto é um aplicativo de previsão de bolsas usando um modelo Random Forest. Abaixo você encontrará informações sobre como instalar, configurar e usar o aplicativo.</p>
+
+    <h3>1.1. Sobre os Modelos</h3>
+    <p>Utilizando os dados disponibilizados pela escola referente aos alunos matriculados no ano de 2022,
+        Investigamos a distribuição desses alunos com base em suas aptidões nas áreas de estudo e classificações
+        que a própria escola disponibiliza.</p>
+    <p>A base foi separada em teste e treino, sendo utilizada 80% para treino e 20% para teste. Os modelos utilizados no estudo foram os:
+    </p>
+    <ol>
+        <li>RANDOM FOREST:</li>
+        <p>O Random Forest foi configurado na Seed 042 e atingiu uma O modelo apresenta uma acurácia geral de 89%, indicando que 89% das previsões 
+        realizadas estão corretas. A análise detalhada do relatório de classificação revela que, para a classe 0 (não bolsista), o modelo tem uma 
+        precisão de 88%, significando que 88% das previsões de não bolsista são corretas, e um recall de 97%, o que mostra que 97% dos não bolsistas 
+        foram corretamente identificados. O F1-Score para a classe 0 é de 0.93, refletindo um bom equilíbrio entre precisão e recall. Por outro lado, 
+        para a classe 1 (bolsista), a precisão é de 93%, indicando que 93% das previsões de bolsista são corretas, mas o recall é de 72%, o que sugere 
+        que o modelo não identifica todos os bolsistas corretamente. O F1-Score para a classe 1 é 0.81, mostrando um bom desempenho geral, mas com espaço 
+        para melhorias, especialmente em termos de recall. A classe 0 possui um número maior de exemplos no conjunto de teste (39) em comparação com a classe 1 (18), 
+        o que pode influenciar as métricas globais do modelo.</p>
+        <li>XGBOOST:</li>
+        <pre><code>pip install -r requirements.txt</code></pre>
+    </ol>
+
+    <h2>2. Resultados</h2>
+    <p>O desempenho do modelo foi avaliado com as seguintes métricas:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Métrica</th>
+                <th>RANDOM FOREST</th>
+                <th>XGBOOST</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Acurácia</td>
+                <td>89%</td>
+                <td>89%</td>
+            </tr>
+            <tr>
+                <td>Precision (Classe 0)</td>
+                <td>0.91</td>
+                <td>0.91</td>
+            </tr>
+            <tr>
+                <td>Recall (Classe 1)</td>
+                <td>0.91</td>
+                <td>0.67</td>
+            </tr>
+            <tr>
+                <td>F1-Score (Classe 1)</td>
+                <td>0.91</td>
+                <td>0.73</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

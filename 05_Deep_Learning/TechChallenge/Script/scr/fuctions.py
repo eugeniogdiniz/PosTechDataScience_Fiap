@@ -35,3 +35,15 @@ class functions:
         for column in list_columns:
             _df[column] = _df[column].replace(['Sim', 'Não'], [1,0])
         return _df
+
+    @staticmethod
+    # Função para carregar o conteúdo HTML
+    def load_html(file_path):
+        with open(file_path, 'r', encoding='utf-8') as file:
+            return file.read()
+
+    @staticmethod
+    # Função para carregar o conteúdo CSS
+    def load_css(file_path):
+        with open(file_path, 'r', encoding='utf-8') as file:
+            return file.read()    

@@ -1,6 +1,9 @@
 from fuctions import functions as f
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
+import joblib
+
 pd.set_option('display.max_columns', None)
 
 csv_url = 'https://raw.githubusercontent.com/eugeniogdiniz/PosTechDataScience_Fiap/main/05_Deep_Learning/arquivos/PEDE_PASSOS_DATASET_FIAP.csv'
@@ -20,7 +23,7 @@ passos_magicos_22.rename(columns={
 }, inplace = True)
 
 st.sidebar.title('Páginas')
-paginaSelecionada = st.sidebar.selectbox('Selecione a Página', ['Passos Mágicos - Origem e Problema', 'Solução'])
+paginaSelecionada = st.sidebar.selectbox('Selecione a Página', ['Passos Mágicos - Origem e Problema', 'Solução Proposta', 'Aplicação'])
 
 if paginaSelecionada == 'Passos Mágicos - Origem e Problema':
     # CSS Customizado para Justificação de Texto
@@ -69,37 +72,126 @@ if paginaSelecionada == 'Passos Mágicos - Origem e Problema':
     # Aplicar CSS e HTML no Streamlit
     st.markdown(css_code + html_code, unsafe_allow_html=True)
 
-elif paginaSelecionada == 'Solução':
-    st.title('Estilização com CSS no Streamlit')
+elif paginaSelecionada == 'Solução Proposta':
 
-    html_code = """
-    <style>
-    .custom-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    .custom-table th, .custom-table td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: left;
-    }
-    .custom-table th {
-        background-color: #f2f2f2;
-    }
-    </style>
-    <table class="custom-table">
-    <tr>
-        <th>Nome</th>
-        <th>Idade</th>
-    </tr>
-    <tr>
-        <td>Maria</td>
-        <td>30</td>
-    </tr>
-    <tr>
-        <td>João</td>
-        <td>25</td>
-    </tr>
-    </table>
-    """
-    st.markdown(html_code, unsafe_allow_html=True)
+    # Título do aplicativo
+    st.title("Solução Proposta - Um estudo na Passos Mágicos")
+
+    html_content = f.load_html(r'C:\Users\AMD\Documents\Projetos\PosTechDataScience_Fiap\05_Deep_Learning\TechChallenge\Script\scr\readme.html')
+    css_content = f.load_css(r'C:\Users\AMD\Documents\Projetos\PosTechDataScience_Fiap\05_Deep_Learning\TechChallenge\Script\scr\styles.css')
+    html_with_css = f"""
+    <style>{css_content}</style>
+    {html_content}
+    """    
+    components.html(html_with_css, height=800, scrolling=True)
+
+elif paginaSelecionada == 'Aplicação':
+    # Carregar o modelo
+    model = joblib.load(r'C:\Users\AMD\Documents\Projetos\PosTechDataScience_Fiap\05_Deep_Learning\TechChallenge\Script\scr\random_forest_model.pkl')
+
+    # Título do aplicativo
+    st.title("Previsão de Bolsista 2022")
+
+    # Carregar o conjunto de dados para predição
+    uploaded_file = st.file_uploader("Escolha um arquivo CSV para upload", type="csv")
+
+    if uploaded_file is not None:
+        data = pd.read_csv(uploaded_file)
+        st.write("Dados carregados:")
+        st.write(data)
+        
+        # Verifica se a coluna BOLSISTA_2022 existe e a remove para predição
+        if 'BOLSISTA_2022' in data.columns:
+            data = data.drop('BOLSISTA_2022', axis=1)
+        
+        # Faz predições
+        predictions = model.predict(data)
+        
+        # Mostra os resultados
+        st.write("Previsões:")
+        data['BOLSISTA_2022_PRED'] = predictions
+        st.write(data)
+        
+        # Baixar os resultados como CSV
+        st.download_button(
+            label="Baixar resultados como CSV",
+            data=data.to_csv(index=False).encode('utf-8'),
+            file_name='predicoes.csv',
+            mime='text/csv',
+        )
+
+    def predict_chance(data):
+        # Criar um DataFrame a partir dos dados de entrada
+        df = pd.DataFrame([data], columns=[
+            'INDE_2022', 'CG_2022', 'CF_2022', 'CT_2022', 'IAA_2022', 
+            'IEG_2022', 'IPS_2022', 'IDA_2022', 'NOTA_PORT_2022', 'NOTA_MAT_2022', 
+            'NOTA_ING_2022', 'QTD_AVAL_2022', 'IPP_2022', 'INDICADO_BOLSA_2022', 
+            'PONTO_VIRADA_2022', 'IPV_2022', 'IAN_2022', 'Ametista', 'Quartzo', 
+            'Topazio', 'Agata'
+        ])
+        prediction = model.predict(df)
+        return prediction[0]
+
+    # Título do aplicativo
+    st.title('Previsão de Entrada na Faculdade')
+
+    # Criação do formulário
+    with st.form(key='student_form'):
+        st.header('Informações do Aluno')
+
+        INDE_2022 = st.number_input('INDE_2022', format='%.2f')
+        CG_2022 = st.number_input('CG_2022', format='%.2f')
+        CF_2022 = st.number_input('CF_2022', format='%.2f')
+        CT_2022 = st.number_input('CT_2022', format='%.2f')
+        IAA_2022 = st.number_input('IAA_2022', format='%.2f')
+        IEG_2022 = st.number_input('IEG_2022', format='%.2f')
+        IPS_2022 = st.number_input('IPS_2022', format='%.2f')
+        IDA_2022 = st.number_input('IDA_2022', format='%.2f')
+        NOTA_PORT_2022 = st.number_input('NOTA_PORT_2022', format='%.2f')
+        NOTA_MAT_2022 = st.number_input('NOTA_MAT_2022', format='%.2f')
+        NOTA_ING_2022 = st.number_input('NOTA_ING_2022', format='%.2f')
+        QTD_AVAL_2022 = st.number_input('QTD_AVAL_2022', format='%.2f')
+        IPP_2022 = st.number_input('IPP_2022', format='%.2f')
+        INDICADO_BOLSA_2022 = st.number_input('INDICADO_BOLSA_2022', format='%.0f')
+        PONTO_VIRADA_2022 = st.number_input('PONTO_VIRADA_2022', format='%.0f')
+        IPV_2022 = st.number_input('IPV_2022', format='%.2f')
+        IAN_2022 = st.number_input('IAN_2022', format='%.2f')
+        Ametista = st.number_input('Ametista', format='%.0f')
+        Quartzo = st.number_input('Quartzo', format='%.0f')
+        Topazio = st.number_input('Topazio', format='%.0f')
+        Agata = st.number_input('Agata', format='%.0f')
+
+        submit_button = st.form_submit_button('Prever')
+
+    # Exibir resultado
+    if submit_button:
+        input_data = {
+            'INDE_2022': INDE_2022,
+            'CG_2022': CG_2022,
+            'CF_2022': CF_2022,
+            'CT_2022': CT_2022,
+            'IAA_2022': IAA_2022,
+            'IEG_2022': IEG_2022,
+            'IPS_2022': IPS_2022,
+            'IDA_2022': IDA_2022,
+            'NOTA_PORT_2022': NOTA_PORT_2022,
+            'NOTA_MAT_2022': NOTA_MAT_2022,
+            'NOTA_ING_2022': NOTA_ING_2022,
+            'QTD_AVAL_2022': QTD_AVAL_2022,
+            'IPP_2022': IPP_2022,
+            'INDICADO_BOLSA_2022': INDICADO_BOLSA_2022,
+            'PONTO_VIRADA_2022': PONTO_VIRADA_2022,
+            'IPV_2022': IPV_2022,
+            'IAN_2022': IAN_2022,
+            'Ametista': Ametista,
+            'Quartzo': Quartzo,
+            'Topazio': Topazio,
+            'Agata': Agata
+        }
+
+        result = predict_chance(input_data)
+
+        if result == 1:
+            st.success('O aluno tem uma boa chance de ser admitido na faculdade.')
+        else:
+            st.warning('O aluno tem uma chance menor de ser admitido na faculdade.')
