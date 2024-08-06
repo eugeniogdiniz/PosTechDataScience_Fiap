@@ -1,6 +1,3 @@
-import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
 import io
 from openpyxl import Workbook
 from openpyxl.worksheet.datavalidation import DataValidation
@@ -20,18 +17,6 @@ class functions:
         _df = df.dropna(subset=df.columns.difference(['NOME']), how='all') # executa o dropna para todas as colunas sem visualizar a coluna NOME
         _df = _df[~_df.isna().all(axis=1)] # remove linhas com apenas NaN, se tiver algum dado na linha não remove
         return _df
-
-    @staticmethod
-    def plot_exact_counter(size, x, y, df) -> None:
-        plt.figure(figsize=size)
-        barplot = plt.bar(y.index, y.values)
-        plt.xlabel(x)
-        plt.ylabel('Count')
-
-        for index, value in enumerate(y.values):
-            plt.text(index, value, round(value, 2), color='black', ha="center")
-
-        plt.show()
 
     @staticmethod
     def dummie_int(df, list_columns):
