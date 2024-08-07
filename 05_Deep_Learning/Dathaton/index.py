@@ -179,7 +179,7 @@ elif paginaSelecionada == 'Aplicação':
 
         result = predict_chance(input_data)
 
-    if result == 1:
-        st.success('O aluno tem uma boa chance de ser admitido na faculdade.')
-    else:
-        st.warning('O aluno tem uma chance menor de ser admitido na faculdade.')
+        if result == 1:
+            st.success('O aluno tem uma boa chance de ser admitido na faculdade.')
+        else:
+            st.warning('O aluno tem uma chance menor de ser admitido na faculdade.')
