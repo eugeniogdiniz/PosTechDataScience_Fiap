@@ -153,14 +153,14 @@ elif paginaSelecionada == 'Aplicação':
     with st.form(key='student_form'):
         st.header('Informações do Aluno')
 
-        IAA_2022 = st.number_input('IAA_2022', format='%.5f')
-        IEG_2022 = st.number_input('IEG_2022', format='%.5f')
-        IPS_2022 = st.number_input('IPS_2022', format='%.5f')
-        IDA_2022 = st.number_input('IDA_2022', format='%.5f')
-        NOTA_PORT_2022 = st.number_input('NOTA_PORT_2022', format='%.5f')
-        NOTA_MAT_2022 = st.number_input('NOTA_MAT_2022', format='%.5f')
-        NOTA_ING_2022 = st.number_input('NOTA_ING_2022', format='%.5f')
-        IPP_2022 = st.number_input('IPP_2022', format='%.5f')
+        IAA_2022 = st.number_input('IAA_2022 - Indicador de Auto Avaliça em 2022', format='%.5f')
+        IEG_2022 = st.number_input('IEG_2022 - Indicador de Engajamento em 2022', format='%.5f')
+        IPS_2022 = st.number_input('IPS_2022 - Indicador Psicossocial em 2022', format='%.5f')
+        IDA_2022 = st.number_input('IDA_2022 - Indicador de Aprendizagem em 2022', format='%.5f')
+        NOTA_PORT_2022 = st.number_input('NOTA_PORT_2022 - Média das Notas de Portugues do Aluno em 2022', format='%.5f')
+        NOTA_MAT_2022 = st.number_input('NOTA_MAT_2022 - Média das Notas de Matematica do Aluno em 2022', format='%.5f')
+        NOTA_ING_2022 = st.number_input('NOTA_ING_2022 - Méia das Notas de Ingles do Aluno em 2022', format='%.5f')
+        IPP_2022 = st.number_input('IPP_2022 - Indicador Psicopedagógico em 2022', format='%.5f')
         
         submit_button = st.form_submit_button('Prever')
 
