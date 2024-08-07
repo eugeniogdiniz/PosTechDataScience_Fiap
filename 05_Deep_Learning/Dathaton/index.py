@@ -153,14 +153,14 @@ elif paginaSelecionada == 'Aplicação':
     with st.form(key='student_form'):
         st.header('Informações do Aluno')
 
-        IAA_2022 = st.number_input('IAA_2022', format='%.2f')
-        IEG_2022 = st.number_input('IEG_2022', format='%.2f')
-        IPS_2022 = st.number_input('IPS_2022', format='%.2f')
-        IDA_2022 = st.number_input('IDA_2022', format='%.2f')
-        NOTA_PORT_2022 = st.number_input('NOTA_PORT_2022', format='%.2f')
-        NOTA_MAT_2022 = st.number_input('NOTA_MAT_2022', format='%.2f')
-        NOTA_ING_2022 = st.number_input('NOTA_ING_2022', format='%.2f')
-        IPP_2022 = st.number_input('IPP_2022', format='%.2f')
+        IAA_2022 = st.number_input('IAA_2022', format='%.5f')
+        IEG_2022 = st.number_input('IEG_2022', format='%.5f')
+        IPS_2022 = st.number_input('IPS_2022', format='%.5f')
+        IDA_2022 = st.number_input('IDA_2022', format='%.5f')
+        NOTA_PORT_2022 = st.number_input('NOTA_PORT_2022', format='%.5f')
+        NOTA_MAT_2022 = st.number_input('NOTA_MAT_2022', format='%.5f')
+        NOTA_ING_2022 = st.number_input('NOTA_ING_2022', format='%.5f')
+        IPP_2022 = st.number_input('IPP_2022', format='%.5f')
         
         submit_button = st.form_submit_button('Prever')
 
