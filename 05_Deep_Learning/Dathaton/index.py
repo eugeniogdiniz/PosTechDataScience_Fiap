@@ -6,6 +6,22 @@ import joblib
 
 pd.set_option('display.max_columns', None)
 
+csv_url = 'https://raw.githubusercontent.com/eugeniogdiniz/PosTechDataScience_Fiap/main/05_Deep_Learning/arquivos/PEDE_PASSOS_DATASET_FIAP.csv'
+df = pd.read_csv(csv_url, delimiter=';')
+passos_magicos_22 = f.filter_columns(df, ['2020', '2021'])
+passos_magicos_22 = f.cleaning_dataset(passos_magicos_22)
+passos_magicos_22 = f.dummie_int(passos_magicos_22, ['BOLSISTA_2022', 'INDICADO_BOLSA_2022', 'PONTO_VIRADA_2022'])
+drop_columns = ['DESTAQUE_IEG_2022', 'DESTAQUE_IDA_2022', 'DESTAQUE_IPV_2022', 'REC_AVA_1_2022',
+                'REC_AVA_2_2022', 'REC_AVA_3_2022', 'REC_AVA_4_2022', 'NIVEL_IDEAL_2022', 'NOME', 'FASE_2022', 'TURMA_2022', 'ANO_INGRESSO_2022']
+passos_magicos_22.drop(columns=drop_columns, inplace=True)
+passos_magicos_22 = pd.get_dummies(passos_magicos_22, columns=['PEDRA_2022'], dtype=int)
+passos_magicos_22.rename(columns={
+    'PEDRA_2022_Ametista':'Ametista',
+    'PEDRA_2022_Quartzo':'Quartzo',
+    'PEDRA_2022_Topázio':'Topazio',
+    'PEDRA_2022_Ágata':'Agata'
+}, inplace = True)
+
 st.sidebar.title('Páginas')
 paginaSelecionada = st.sidebar.selectbox('Selecione a Página', ['Passos Mágicos - Origem e Problema', 'Solução Proposta', 'Aplicação'])
 
@@ -61,8 +77,8 @@ elif paginaSelecionada == 'Solução Proposta':
     # Título do aplicativo
     st.title("Solução Proposta - Um estudo na Passos Mágicos")
 
-    html_content = f.load_html('readme.html')
-    css_content = f.load_css('styles.css')
+    html_content = f.load_html('https://github.com/eugeniogdiniz/PosTechDataScience_Fiap/blob/2a8274354634bcb6862f6fb56dbbf13e401520bf/05_Deep_Learning/Dathaton/readme.html')
+    css_content = f.load_css('https://github.com/eugeniogdiniz/PosTechDataScience_Fiap/blob/c494ed804dceebaadcc70be5e3064321a233244d/05_Deep_Learning/Dathaton/styles.css')
     html_with_css = f"""
     <style>{css_content}</style>
     {html_content}
@@ -71,8 +87,8 @@ elif paginaSelecionada == 'Solução Proposta':
 
 elif paginaSelecionada == 'Aplicação':
     # Carregar o modelo
-    #model = joblib.load(r'modelo_xgboost.pkl')
-    model = joblib.load(r'random_forest_model.pkl')
+    #model = joblib.load('https://github.com/eugeniogdiniz/PosTechDataScience_Fiap/blob/2a8274354634bcb6862f6fb56dbbf13e401520bf/05_Deep_Learning/Dathaton/modelo_xgboost.pkl')
+    model = joblib.load('https://github.com/eugeniogdiniz/PosTechDataScience_Fiap/blob/2a8274354634bcb6862f6fb56dbbf13e401520bf/05_Deep_Learning/Dathaton/random_forest_model.pkl')
 
     # Título do aplicativo
     st.title("Previsão de Bolsista 2022")
