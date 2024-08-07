@@ -77,8 +77,8 @@ elif paginaSelecionada == 'Solução Proposta':
     # Título do aplicativo
     st.title("Solução Proposta - Um estudo na Passos Mágicos")
 
-    html_content = f.load_html('https://github.com/eugeniogdiniz/PosTechDataScience_Fiap/blob/2a8274354634bcb6862f6fb56dbbf13e401520bf/05_Deep_Learning/Dathaton/readme.html')
-    css_content = f.load_css('https://github.com/eugeniogdiniz/PosTechDataScience_Fiap/blob/c494ed804dceebaadcc70be5e3064321a233244d/05_Deep_Learning/Dathaton/styles.css')
+    html_content = f.load_html('05_Deep_Learning/Dathaton/readme.html')
+    css_content = f.load_css('05_Deep_Learning/Dathaton/styles.css')
     html_with_css = f"""
     <style>{css_content}</style>
     {html_content}
@@ -87,8 +87,8 @@ elif paginaSelecionada == 'Solução Proposta':
 
 elif paginaSelecionada == 'Aplicação':
     # Carregar o modelo
-    #model = joblib.load('https://github.com/eugeniogdiniz/PosTechDataScience_Fiap/blob/2a8274354634bcb6862f6fb56dbbf13e401520bf/05_Deep_Learning/Dathaton/modelo_xgboost.pkl')
-    model = joblib.load('https://github.com/eugeniogdiniz/PosTechDataScience_Fiap/blob/2a8274354634bcb6862f6fb56dbbf13e401520bf/05_Deep_Learning/Dathaton/random_forest_model.pkl')
+    #model = joblib.load('05_Deep_Learning/Dathaton/modelo_xgboost.pkl')
+    model = joblib.load('05_Deep_Learning/Dathaton/random_forest_model.pkl')
 
     # Título do aplicativo
     st.title("Previsão de Bolsista 2022")
