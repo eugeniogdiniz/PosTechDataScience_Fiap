@@ -141,7 +141,7 @@ elif paginaSelecionada == 'Aplicação':
         # Criar um DataFrame a partir dos dados de entrada
         df = pd.DataFrame([data], columns=[
         'IAA_2022', 'IEG_2022', 'IPS_2022', 'IDA_2022', 'NOTA_PORT_2022',
-        'NOTA_MAT_2022', 'NOTA_ING_2022', 'IPP_2022', 'INDICADO_BOLSA_2022'
+        'NOTA_MAT_2022', 'NOTA_ING_2022', 'IPP_2022'
         ])
         prediction = model.predict(df)
         return prediction[0]
