@@ -154,7 +154,7 @@ elif paginaSelecionada == 'Aplicação':
 
     # Criação do formulário
     with st.form(key='student_form'):
-    st.header('Informações do Aluno')
+        st.header('Informações do Aluno')
 
     INDE_2022 = st.number_input('INDE_2022', format='%.2f')
     CG_2022 = st.number_input('CG_2022', format='%.2f')
@@ -182,31 +182,31 @@ elif paginaSelecionada == 'Aplicação':
 
     # Exibir resultado
     if submit_button:
-    input_data = {
-        'INDE_2022': INDE_2022,
-        'CG_2022': CG_2022,
-        'CF_2022': CF_2022,
-        'CT_2022': CT_2022,
-        'IAA_2022': IAA_2022,
-        'IEG_2022': IEG_2022,
-        'IPS_2022': IPS_2022,
-        'IDA_2022': IDA_2022,
-        'NOTA_PORT_2022': NOTA_PORT_2022,
-        'NOTA_MAT_2022': NOTA_MAT_2022,
-        'NOTA_ING_2022': NOTA_ING_2022,
-        'QTD_AVAL_2022': QTD_AVAL_2022,
-        'IPP_2022': IPP_2022,
-        'INDICADO_BOLSA_2022': INDICADO_BOLSA_2022,
-        'PONTO_VIRADA_2022': PONTO_VIRADA_2022,
-        'IPV_2022': IPV_2022,
-        'IAN_2022': IAN_2022,
-        'Ametista': Ametista,
-        'Quartzo': Quartzo,
-        'Topazio': Topazio,
-        'Agata': Agata
-    }
+        input_data = {
+            'INDE_2022': INDE_2022,
+            'CG_2022': CG_2022,
+            'CF_2022': CF_2022,
+            'CT_2022': CT_2022,
+            'IAA_2022': IAA_2022,
+            'IEG_2022': IEG_2022,
+            'IPS_2022': IPS_2022,
+            'IDA_2022': IDA_2022,
+            'NOTA_PORT_2022': NOTA_PORT_2022,
+            'NOTA_MAT_2022': NOTA_MAT_2022,
+            'NOTA_ING_2022': NOTA_ING_2022,
+            'QTD_AVAL_2022': QTD_AVAL_2022,
+            'IPP_2022': IPP_2022,
+            'INDICADO_BOLSA_2022': INDICADO_BOLSA_2022,
+            'PONTO_VIRADA_2022': PONTO_VIRADA_2022,
+            'IPV_2022': IPV_2022,
+            'IAN_2022': IAN_2022,
+            'Ametista': Ametista,
+            'Quartzo': Quartzo,
+            'Topazio': Topazio,
+            'Agata': Agata
+        }
 
-    result = predict_chance(input_data)
+        result = predict_chance(input_data)
 
     if result == 1:
         st.success('O aluno tem uma boa chance de ser admitido na faculdade.')
