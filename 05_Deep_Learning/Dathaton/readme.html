@@ -15,41 +15,7 @@
     <h2>1. Introdução</h2>
     <p>Este projeto é um aplicativo de previsão de bolsas usando um modelo Random Forest. Abaixo você encontrará informações sobre como instalar, configurar e usar o aplicativo.</p>
 
-    <h3>1.1. Sobre os Modelos</h3>
-    <p>Utilizando os dados disponibilizados pela escola referente aos alunos matriculados no ano de 2022,
-        Investigamos a distribuição desses alunos com base em suas aptidões nas áreas de estudo e classificações
-        que a própria escola disponibiliza.</p>
-    <p>A base foi separada em teste e treino, sendo utilizada 80% para treino e 20% para teste. Os modelos utilizados no estudo foram os:
-    </p>
-    <ol>
-        <li>RANDOM FOREST:</li>
-        <p>
-        Melhores parâmetros: {'n_estimators': 100, 'max_depth': 10, 'min_samples_split': 2, 'min_samples_leaf': 1, 'bootstrap': True}
-        Acurácia: 0.7543859649122807
-        </p>
-        <p>
-        O Random Forest foi configurado com os melhores parâmetros encontrados e obteve uma acurácia geral de 75.4%, indicando que 75.4% das previsões realizadas estão corretas. A análise detalhada do relatório de classificação revela que, para a classe 0 (não bolsista), o modelo tem uma precisão de 73%, significando que 73% das previsões de não bolsista são corretas, e um recall de 80%, mostrando que 80% dos não bolsistas foram corretamente identificados. O F1-Score para a classe 0 é de 0.76. Para a classe 1 (bolsista), a precisão é de 79%, indicando que 79% das previsões de bolsista são corretas, enquanto o recall é de 68%, o que sugere que o modelo não identifica todos os bolsistas corretamente. O F1-Score para a classe 1 é 0.73. A classe 0 possui um número maior de exemplos no conjunto de teste (40) em comparação com a classe 1 (17), o que pode influenciar as métricas globais do modelo.
-        </p>
-        <li>XGBOOST:</li>
-        <p>
-        Melhores parâmetros: {'n_estimators': 100, 'learning_rate': 0.1, 'max_depth': 5, 'subsample': 0.8}
-        Acurácia: 0.8245614035087719
-        </p>
-        <p>
-        O Gradient Boosting foi configurado com os melhores parâmetros encontrados e atingiu uma acurácia geral de 82.5%, indicando que 82.5% das previsões realizadas estão corretas. A análise detalhada do relatório de classificação revela que, para a classe 0 (não bolsista), o modelo tem uma precisão de 83%, significando que 83% das previsões de não bolsista são corretas, e um recall de 82%, mostrando que 82% dos não bolsistas foram corretamente identificados. O F1-Score para a classe 0 é de 0.82. Para a classe 1 (bolsista), a precisão é de 82%, indicando que 82% das previsões de bolsista são corretas, e o recall é de 83%, o que sugere um bom desempenho na identificação dos bolsistas. O F1-Score para a classe 1 é 0.82. A classe 0 possui um número maior de exemplos no conjunto de teste (40) em comparação com a classe 1 (17), o que pode influenciar as métricas globais do modelo.
-        </p>
-        <li>Logistic Regression:</li>
-        <p>
-        Melhores parâmetros: {'C': 1.0, 'solver': 'lbfgs', 'max_iter': 100}
-        Acurácia: 0.6842105263157895
-        </p>
-        <p>
-        A Logistic Regression foi configurada com os melhores parâmetros encontrados e obteve uma acurácia geral de 68.4%, indicando que 68.4% das previsões realizadas estão corretas. A análise detalhada do relatório de classificação revela que, para a classe 0 (não bolsista), o modelo tem uma precisão de 65%, significando que 65% das previsões de não bolsista são corretas, e um recall de 72%, mostrando que 72% dos não bolsistas foram corretamente identificados. O F1-Score para a classe 0 é de 0.68. Para a classe 1 (bolsista), a precisão é de 72%, indicando que 72% das previsões de bolsista são corretas, enquanto o recall é de 65%, o que sugere que o modelo não identifica todos os bolsistas corretamente. O F1-Score para a classe 1 é 0.68. A classe 0 possui um número maior de exemplos no conjunto de teste (40) em comparação com a classe 1 (17), o que pode influenciar as métricas globais do modelo.
-        </p>
-        <pre><code>pip install -r requirements.txt</code></pre>
-    </ol>
-
-    <h2>2. Resultados</h2>
+    <h2>1.1. Sobre os Paramêtros</h2>
     <p>Os parâmetros de configuração para cada modelo foram os seguintes:</p>
     <table>
         <thead>
@@ -85,5 +51,41 @@
             </tr>
         </tbody>
     </table>
+    
+    <h3>1.2. Sobre os Modelos</h3>
+    <p>Utilizando os dados disponibilizados pela escola referente aos alunos matriculados no ano de 2022,
+        Investigamos a distribuição desses alunos com base em suas aptidões nas áreas de estudo e classificações
+        que a própria escola disponibiliza.</p>
+    <p>A base foi separada em teste e treino, sendo utilizada 80% para treino e 20% para teste. Os modelos utilizados no estudo foram os:
+    </p>
+    <ol>
+        <li>RANDOM FOREST:</li>
+        <p>
+        Melhores parâmetros: {'n_estimators': 100, 'max_depth': 10, 'min_samples_split': 2, 'min_samples_leaf': 1, 'bootstrap': True}
+        Acurácia: 0.7543859649122807
+        </p>
+        <p>
+        O Random Forest foi configurado com os melhores parâmetros encontrados e obteve uma acurácia geral de 75.4%, indicando que 75.4% das previsões realizadas estão corretas. A análise detalhada do relatório de classificação revela que, para a classe 0 (não bolsista), o modelo tem uma precisão de 73%, significando que 73% das previsões de não bolsista são corretas, e um recall de 80%, mostrando que 80% dos não bolsistas foram corretamente identificados. O F1-Score para a classe 0 é de 0.76. Para a classe 1 (bolsista), a precisão é de 79%, indicando que 79% das previsões de bolsista são corretas, enquanto o recall é de 68%, o que sugere que o modelo não identifica todos os bolsistas corretamente. O F1-Score para a classe 1 é 0.73. A classe 0 possui um número maior de exemplos no conjunto de teste (40) em comparação com a classe 1 (17), o que pode influenciar as métricas globais do modelo.
+        </p>
+        <li>XGBOOST:</li>
+        <p>
+        Melhores parâmetros: {'n_estimators': 100, 'learning_rate': 0.1, 'max_depth': 5, 'subsample': 0.8}
+        Acurácia: 0.8245614035087719
+        </p>
+        <p>
+        O Gradient Boosting foi configurado com os melhores parâmetros encontrados e atingiu uma acurácia geral de 82.5%, indicando que 82.5% das previsões realizadas estão corretas. A análise detalhada do relatório de classificação revela que, para a classe 0 (não bolsista), o modelo tem uma precisão de 83%, significando que 83% das previsões de não bolsista são corretas, e um recall de 82%, mostrando que 82% dos não bolsistas foram corretamente identificados. O F1-Score para a classe 0 é de 0.82. Para a classe 1 (bolsista), a precisão é de 82%, indicando que 82% das previsões de bolsista são corretas, e o recall é de 83%, o que sugere um bom desempenho na identificação dos bolsistas. O F1-Score para a classe 1 é 0.82. A classe 0 possui um número maior de exemplos no conjunto de teste (40) em comparação com a classe 1 (17), o que pode influenciar as métricas globais do modelo.
+        </p>
+        <li>Logistic Regression:</li>
+        <p>
+        Melhores parâmetros: {'C': 1.0, 'solver': 'lbfgs', 'max_iter': 100}
+        Acurácia: 0.6842105263157895
+        </p>
+        <p>
+        A Logistic Regression foi configurada com os melhores parâmetros encontrados e obteve uma acurácia geral de 68.4%, indicando que 68.4% das previsões realizadas estão corretas. A análise detalhada do relatório de classificação revela que, para a classe 0 (não bolsista), o modelo tem uma precisão de 65%, significando que 65% das previsões de não bolsista são corretas, e um recall de 72%, mostrando que 72% dos não bolsistas foram corretamente identificados. O F1-Score para a classe 0 é de 0.68. Para a classe 1 (bolsista), a precisão é de 72%, indicando que 72% das previsões de bolsista são corretas, enquanto o recall é de 65%, o que sugere que o modelo não identifica todos os bolsistas corretamente. O F1-Score para a classe 1 é 0.68. A classe 0 possui um número maior de exemplos no conjunto de teste (40) em comparação com a classe 1 (17), o que pode influenciar as métricas globais do modelo.
+        </p>
+        <pre><code>pip install -r requirements.txt</code></pre>
+    </ol>
+
+
 </body>
 </html>
