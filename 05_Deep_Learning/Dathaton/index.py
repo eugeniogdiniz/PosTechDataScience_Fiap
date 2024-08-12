@@ -88,8 +88,8 @@ elif paginaSelecionada == 'Solução Proposta':
 elif paginaSelecionada == 'Aplicação':
     # Carregar o modelo
     #model = joblib.load('05_Deep_Learning/Dathaton/modelo_xgboost.pkl')
-    #model = joblib.load('05_Deep_Learning/Dathaton/random_forest_model.pkl')
-    model = joblib.load('05_Deep_Learning/Dathaton/best_model.pkl')
+    model = joblib.load('05_Deep_Learning/Dathaton/random_forest_model.pkl')
+    #model = joblib.load('05_Deep_Learning/Dathaton/best_model.pkl')
 
     # Título do aplicativo
     st.title("Previsão de Bolsista 2022")
