@@ -50,35 +50,38 @@
     </ol>
 
     <h2>2. Resultados</h2>
-    <p>O desempenho do modelo foi avaliado com as seguintes métricas:</p>
+    <p>Os parâmetros de configuração para cada modelo foram os seguintes:</p>
     <table>
         <thead>
             <tr>
-                <th>Métrica</th>
-                <th>RANDOM FOREST</th>
-                <th>XGBOOST</th>
+                <th>Modelo</th>
+                <th>Parâmetros</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Acurácia</td>
-                <td>89%</td>
-                <td>89%</td>
+                <td>Random Forest</td>
+                <td>
+                    <code>{'n_estimators': 100, 'max_depth': 10, 'min_samples_split': 2, 'min_samples_leaf': 1, 'bootstrap': True}</code>
+                </td>
             </tr>
             <tr>
-                <td>Precision (Classe 0)</td>
-                <td>0.91</td>
-                <td>0.91</td>
+                <td>Gradient Boosting</td>
+                <td>
+                    <code>{'n_estimators': 100, 'learning_rate': 0.1, 'max_depth': 5, 'subsample': 0.8}</code>
+                </td>
             </tr>
             <tr>
-                <td>Recall (Classe 1)</td>
-                <td>0.91</td>
-                <td>0.67</td>
+                <td>Logistic Regression</td>
+                <td>
+                    <code>{'C': 1.0, 'solver': 'lbfgs', 'max_iter': 100}</code>
+                </td>
             </tr>
             <tr>
-                <td>F1-Score (Classe 1)</td>
-                <td>0.91</td>
-                <td>0.73</td>
+                <td>SVM</td>
+                <td>
+                    <code>{'C': 1.0, 'kernel': 'rbf', 'gamma': 'scale'}</code>
+                </td>
             </tr>
         </tbody>
     </table>
