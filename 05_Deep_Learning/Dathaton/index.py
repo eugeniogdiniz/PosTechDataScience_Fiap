@@ -92,7 +92,7 @@ elif paginaSelecionada == 'Aplicação':
     model = joblib.load('05_Deep_Learning/Dathaton/best_model.pkl')
 
     # Título do aplicativo
-    st.title("Previsão de Bolsista 2022 - Modelo Best Model")
+    st.title("Previsão de Bolsista")
 
     # Título do aplicativo
     st.title('Download da Planilha Modelo')
